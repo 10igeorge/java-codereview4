@@ -17,4 +17,14 @@ public class BandTest {
   public void all_returnsAllBands_emptyAtFirst() {
     assertEquals(Band.all().size(), 0);
   }
+
+  @Test
+  public void all_ensuresAllBandsAreSavedCorrectly(){
+    Band firstBand = new Band("Modest Mouse");
+    Band secondBand = new Band("Beach House");
+    firstBand.save();
+    secondBand.save();
+    assertEquals(Band.all().size(), 2);
+  }
+
 }
