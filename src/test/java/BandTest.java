@@ -27,4 +27,13 @@ public class BandTest {
     assertEquals(Band.all().size(), 2);
   }
 
+  @Test
+  public void find_findsBandInDatabase(){
+    Band firstBand = new Band("Modest Mouse");
+    Band secondBand = new Band("Beach House");
+    firstBand.save();
+    secondBand.save();
+    Band savedBand = Band.find(firstBand.getId());
+    assertTrue(savedBand.equals(firstBand));
+  }
 }
