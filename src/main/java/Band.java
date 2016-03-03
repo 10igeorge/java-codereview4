@@ -35,4 +35,14 @@ public class Band {
       .executeAndFetch(Band.class);
     }
   }
+
+  public void save(){
+    String sql = "INSERT INTO bands (band_name) VALUES (:band_name)";
+    try(Connection con = DB.sql2o.open()){
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("band_name", band_name)
+        .executeUpdate()
+        .getKey();
+    }
+  }
 }
