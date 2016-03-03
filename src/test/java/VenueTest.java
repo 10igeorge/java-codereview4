@@ -28,6 +28,13 @@ public class VenueTest {
     assertEquals(Venue.all().size(), 2);
   }
 
+  @Test
+  public void save_addsIdToLocalObject() {
+    Venue firstVenue = new Venue("Ash Street Saloon");
+    firstVenue.save();
+    assertEquals(Venue.all().get(0).getId(), firstVenue.getId());
+  }
+
   // @Test
   // public void find_findsVenueInDatabase(){
   //   Venue firstVenue = new Venue("Ash Street Saloon");
