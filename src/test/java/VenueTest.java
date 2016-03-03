@@ -35,16 +35,16 @@ public class VenueTest {
     assertEquals(Venue.all().get(0).getId(), firstVenue.getId());
   }
 
-  // @Test
-  // public void find_findsVenueInDatabase(){
-  //   Venue firstVenue = new Venue("Ash Street Saloon");
-  //   Venue secondVenue = new Venue("Doug Fir");
-  //   firstVenue.save();
-  //   secondVenue.save();
-  //   Venue savedVenue = Venue.find(firstVenue.getId());
-  //   assertTrue(savedVenue.equals(firstVenue));
-  // }
-  //
+  @Test
+  public void find_findsVenueInDatabase(){
+    Venue firstVenue = new Venue("Ash Street Saloon");
+    Venue secondVenue = new Venue("Doug Fir");
+    firstVenue.save();
+    secondVenue.save();
+    Venue savedVenue = Venue.find(firstVenue.getId());
+    assertTrue(savedVenue.equals(firstVenue));
+  }
+  
   // @Test
   // public void delete_deletesVenueFromDatabase(){
   //   Venue firstVenue = new Venue("Ash Street Saloon");

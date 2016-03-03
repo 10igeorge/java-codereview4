@@ -45,4 +45,13 @@ public class Venue {
       .getKey();
     }
   }
+
+  public static Venue find(int id){
+    String sql = "SELECT * FROM venues WHERE id=:id";
+    try(Connection con = DB.sql2o.open()){
+      return con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Venue.class);
+    }
+  }
 }
