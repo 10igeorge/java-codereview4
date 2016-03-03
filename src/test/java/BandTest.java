@@ -55,4 +55,21 @@ public class BandTest {
     Band savedBand = Band.find(firstBand.getId());
     assertEquals(savedBand.getBandName(), "Modest Mouse");
   }
+
+  @Test
+  public void addVenue_addsAVenueToBand(){
+    Band firstBand = new Band("Modest Mouse");
+    Band secondBand = new Band("Beach House");
+    firstBand.save();
+    secondBand.save();
+    Venue firstVenue = new Venue("Ash Street Saloon");
+    Venue secondVenue = new Venue("Doug Fir");
+    firstVenue.save();
+    secondVenue.save();
+    firstBand.addVenue(secondVenue.getId());
+    firstBand.addVenue(firstVenue.getId());
+    secondBand.addVenue(firstVenue.getId());
+    assertTrue(firstBand.getVenues().contains(secondVenue));
+    assertEquals(secondBand.getVenues().size(), 1);
+  }
 }
