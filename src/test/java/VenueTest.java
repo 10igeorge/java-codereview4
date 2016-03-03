@@ -14,20 +14,20 @@ public class VenueTest {
     assertEquals(Venue.all().get(0), venue);
   }
 
-  // @Test
-  // public void all_returnsAllVenues_emptyAtFirst() {
-  //   assertEquals(Venue.all().size(), 0);
-  // }
-  //
-  // @Test
-  // public void all_ensuresAllVenuesAreSavedCorrectly(){
-  //   Venue firstVenue = new Venue("Ash Street Saloon");
-  //   Venue secondVenue = new Venue("Doug Fir");
-  //   firstVenue.save();
-  //   secondVenue.save();
-  //   assertEquals(Venue.all().size(), 2);
-  // }
-  //
+  @Test
+  public void all_returnsAllVenues_emptyAtFirst() {
+    assertEquals(Venue.all().size(), 0);
+  }
+
+  @Test
+  public void all_ensuresAllVenuesAreSavedCorrectly(){
+    Venue firstVenue = new Venue("Ash Street Saloon");
+    Venue secondVenue = new Venue("Doug Fir");
+    firstVenue.save();
+    secondVenue.save();
+    assertEquals(Venue.all().size(), 2);
+  }
+
   // @Test
   // public void find_findsVenueInDatabase(){
   //   Venue firstVenue = new Venue("Ash Street Saloon");
