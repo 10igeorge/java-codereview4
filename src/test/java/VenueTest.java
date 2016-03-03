@@ -44,7 +44,24 @@ public class VenueTest {
     Venue savedVenue = Venue.find(firstVenue.getId());
     assertTrue(savedVenue.equals(firstVenue));
   }
-  
+
+  @Test
+  public void addBand_addsABandToVenue(){
+    Band firstBand = new Band("Modest Mouse");
+    Band secondBand = new Band("Beach House");
+    firstBand.save();
+    secondBand.save();
+    Venue firstVenue = new Venue("Ash Street Saloon");
+    Venue secondVenue = new Venue("Doug Fir");
+    firstVenue.save();
+    secondVenue.save();
+    firstVenue.addBand(secondBand.getId());
+    firstVenue.addBand(firstBand.getId());
+    secondVenue.addBand(firstBand.getId());
+    assertTrue(firstVenue.getBands().contains(secondBand));
+    assertEquals(secondVenue.getBands().size(), 1);
+  }
+
   // @Test
   // public void delete_deletesVenueFromDatabase(){
   //   Venue firstVenue = new Venue("Ash Street Saloon");
