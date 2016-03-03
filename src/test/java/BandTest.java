@@ -46,4 +46,13 @@ public class BandTest {
     firstBand.delete();
     assertFalse(Band.all().contains(firstBand));
   }
+
+  @Test
+  public void update_updatesBandInfo(){
+    Band firstBand = new Band("Modest House");
+    firstBand.save();
+    firstBand.update("Modest Mouse");
+    Band savedBand = Band.find(firstBand.getId());
+    assertEquals(savedBand.getBandName(), "Modest Mouse");
+  }
 }
