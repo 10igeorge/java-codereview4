@@ -45,7 +45,16 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Doug Fir has successfully been added to the venue list!");
   }
 
-
+  @Test
+  public void listAllBands() {
+    Band firstBand = new Band("Modest Mouse");
+    Band secondBand = new Band("Beach House");
+    firstBand.save();
+    secondBand.save();
+    goTo("http://localhost:4567/bands");
+    assertThat(pageSource()).contains("Modest Mouse");
+    assertThat(pageSource()).contains("Beach House");
+  }
 
   @Test
   public void listAllVenues() {
