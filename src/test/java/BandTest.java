@@ -38,16 +38,6 @@ public class BandTest {
   }
 
   @Test
-  public void delete_deletesBandFromDatabase(){
-    Band firstBand = new Band("Modest Mouse");
-    Band secondBand = new Band("Beach House");
-    firstBand.save();
-    secondBand.save();
-    firstBand.delete();
-    assertFalse(Band.all().contains(firstBand));
-  }
-
-  @Test
   public void update_updatesBandInfo(){
     Band firstBand = new Band("Modest House");
     firstBand.save();
@@ -55,6 +45,16 @@ public class BandTest {
     Band savedBand = Band.find(firstBand.getId());
     assertEquals(savedBand.getBandName(), "Modest Mouse");
   }
+
+  @Test
+   public void delete_deletesObjectFromDatabase(){
+     Band firstBand = new Band("Modest Mouse");
+     Band secondBand = new Band("Beach House");
+     firstBand.save();
+     secondBand.save();
+     firstBand.delete();
+     assertFalse(Band.all().contains(firstBand));
+   }
 
   @Test
   public void addVenue_addsAVenueToBand(){

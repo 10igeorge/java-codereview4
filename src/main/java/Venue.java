@@ -55,6 +55,15 @@ public class Venue {
     }
   }
 
+  public void delete(){
+    String sql = "DELETE FROM venues WHERE id=:id";
+    try(Connection con = DB.sql2o.open()){
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
   public List<Band> getBands(){
   String sql = "SELECT DISTINCT ON (id) bands.* FROM venues JOIN bands_venues ON (venues.id = bands_venues.venue_id) JOIN bands ON (bands_venues.band_id = bands.id) WHERE venues.id=:id";
   try(Connection con = DB.sql2o.open()) {

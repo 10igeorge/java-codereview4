@@ -83,4 +83,15 @@ public class AppTest extends FluentTest {
     submit("#addVenue");
     assertThat(pageSource()).contains("These venues have been added to the venues played list");
   }
+
+  @Test
+  public void deleteBand(){
+    Band firstBand = new Band("Modest Mouse");
+    Band secondBand = new Band("Beach House");
+    firstBand.save();
+    secondBand.save();
+    firstBand.delete();
+    goTo("http://localhost:4567/bands");
+    assertThat(pageSource()).doesNotContain("Modest Mouse");
+  }
 }
