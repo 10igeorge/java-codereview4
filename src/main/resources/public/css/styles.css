@@ -1,10 +1,7 @@
 #delete {
-  public void delete(){
-    String sql = "DELETE FROM bands WHERE id=:id";
-    try(Connection con = DB.sql2o.open()){
-      con.createQuery(sql)
-        .addParameter("id", id)
-        .executeUpdate();
-    }
-  }
+  background: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  margin-left: 20px;
+  position: relative;
 }

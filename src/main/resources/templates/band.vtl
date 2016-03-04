@@ -2,11 +2,18 @@
 <div class="row">
   <div class="col-sm-6">
     <h4>Venues Played:</h4>
-    <div class="list-group">
-      #foreach($venue in $playedVenues)
-        <a href="/venues/$venue.getId()" class="list-group-item">$venue.getVenueName()</a>
-      #end
-    </div>
+
+    #if ($playedVenues.size() != 0)
+      <div class="list-group">
+        #foreach($venue in $playedVenues)
+          <a href="/venues/$venue.getId()" class="list-group-item">$venue.getVenueName()</a>
+        #end
+      </div>
+    #else
+      <p>Looks like this band hasn't played anywhere yet!</p>
+    #end
+
+
 
   </div>
   <div class="col-sm-6">

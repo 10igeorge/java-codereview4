@@ -2,11 +2,15 @@
 <div class="row">
   <div class="col-sm-6">
     <h4>Bands hosted:</h4>
-    <div class="list-group">
-    #foreach ($band in $bandsHosted)
-      <a href="/bands/$band.getId()" class="list-group-item">$band.getBandName()</a>
+    #if ($bandsHosted.size() != 0)
+      <div class="list-group">
+      #foreach ($band in $bandsHosted)
+        <a href="/bands/$band.getId()" class="list-group-item">$band.getBandName()</a>
+      #end
+      </div>
+    #else
+      <p>This venue has not hosted any bands yet!</p>
     #end
-    </div>
   </div>
 
   <div class="col-sm-6">
@@ -25,7 +29,7 @@
 
 
     #if($addedBands)
-      <h5>These bands have been added to the bands hosted list for $venue.getVenueName()</h5>
+      <h5>These bands have been added to the bands hosted list for $venue.getVenueName():</h5>
       #foreach($band in $addedBands)
         <h5>$band.getBandName()</h5>
       #end
