@@ -1,0 +1,25 @@
+#if($bands)
+  <h1>Bands</h1>
+  #foreach ($band in $bands)
+    <ul class="list-group">
+      <li class="list-group-item">
+        <dl class="list-group">
+          <dt><a href="/bands/$band.getId()">$band.getBandName()</a></dt>
+        </dl>
+      </li>
+    </ul>
+  #end
+#end
+
+#if($venues)
+  <h1>Venues</h1>
+  #foreach ($venue in $venues)
+    <ul class="list-group">
+      <li class="list-group-item">
+        <dl class="list-group">
+          <dt><a href="/venues/$venue.getId()">$venue.getVenueName()</a></dt>
+        </dl>
+      </li>
+    </ul>
+  #end
+#end

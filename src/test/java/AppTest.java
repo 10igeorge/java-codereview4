@@ -44,4 +44,17 @@ public class AppTest extends FluentTest {
     submit("#createVenue");
     assertThat(pageSource()).contains("Doug Fir has successfully been added to the venue list!");
   }
+
+
+
+  @Test
+  public void listAllVenues() {
+    Venue firstVenue = new Venue("Ash Street Saloon");
+    Venue secondVenue = new Venue("Doug Fir");
+    firstVenue.save();
+    secondVenue.save();
+    goTo("http://localhost:4567/venues");
+    assertThat(pageSource()).contains("Ash Street Saloon");
+    assertThat(pageSource()).contains("Doug Fir");
+  }
 }
