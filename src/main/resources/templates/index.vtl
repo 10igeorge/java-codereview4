@@ -1,3 +1,4 @@
+<h4>List where bands have played or view which bands venues have hosted. Add a band or venue to the database to begin!</h4>
 <div class="row">
    <div class="col-sm-6">
      <form action="/add-band" method="post">
@@ -15,7 +16,7 @@
     <form action="/add-venue" method="post">
       <label for="venueName">Venue Name:</label><br>
       <input type="text" name="venueName" id="venueName"><br><br>
-      <button type="submit" id="createVenue">Insert Venue</button>
+      <button type="submit" id="createVenue" class="btn btn-success">Insert Venue</button>
     </form><br><br>
    #if ($venue)
      <hr/>

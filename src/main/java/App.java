@@ -2,6 +2,7 @@ import java.util.HashMap;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
+import java.util.ArrayList;
 
 public class App {
   public static void main(String[] args) {
@@ -46,6 +47,36 @@ public class App {
       model.put("venues", Venue.all());
       model.put("template", "templates/viewall.vtl");
       return new ModelAndView (model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/bands/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Band band = Band.find(id);
+      model.put("venues", Venue.all());
+      model.put("band", band);
+      model.put("playedVenues", band.getVenues());
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/bands/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Band band = Band.find(id);
+      String[] addedIds = request.queryParamsValues("checkVenue");
+      ArrayList<Venue> addedVenues = new ArrayList<Venue>();
+      if (addedIds != null) {
+        for (String venueId : addedIds) {
+          band.addVenue(Integer.parseInt(venueId));
+          addedVenues.add(Venue.find(Integer.parseInt(venueId)));
+        }
+      }
+      model.put("playedVenues", band.getVenues());
+      model.put("band", band);
+      model.put("venues", Venue.all());
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }
 }
