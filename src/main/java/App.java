@@ -17,8 +17,9 @@ public class App {
 
     post("/add-band", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      String newBand = request.queryParams("bandName");
-      Band band = new Band(newBand);
+      String bandName = request.queryParams("bandName");
+      String bandInfo = request.queryParams("bandInfo");
+      Band band = new Band(bandName, bandInfo);
       band.save();
       model.put("band", band);
       model.put("template", "templates/index.vtl");

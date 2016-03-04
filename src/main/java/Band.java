@@ -4,9 +4,11 @@ import java.util.List;
 public class Band {
   private int id;
   private String band_name;
+  private String band_info;
 
-  public Band(String name){
+  public Band(String name, String info){
     band_name = name;
+    band_info = info;
   }
 
   public int getId(){
@@ -64,7 +66,7 @@ public class Band {
     }
   }
 
-  public void update(String newBandName){
+  public void updateName(String newBandName){
     band_name = newBandName;
     String sql = "UPDATE bands SET band_name=:band_name WHERE id=:id";
     try(Connection con = DB.sql2o.open()){

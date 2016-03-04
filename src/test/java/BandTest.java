@@ -8,7 +8,7 @@ public class BandTest {
 
   @Test
   public void save_savesBandIntoDatabase(){
-    Band band = new Band("Modest Mouse");
+    Band band = new Band("Modest Mouse", "info");
     band.save();
     assertEquals(Band.all().get(0), band);
   }
@@ -20,8 +20,8 @@ public class BandTest {
 
   @Test
   public void all_ensuresAllBandsAreSavedCorrectly(){
-    Band firstBand = new Band("Modest Mouse");
-    Band secondBand = new Band("Beach House");
+    Band firstBand = new Band("Modest Mouse", "info");
+    Band secondBand = new Band("Beach House", "info");
     firstBand.save();
     secondBand.save();
     assertEquals(Band.all().size(), 2);
@@ -29,8 +29,8 @@ public class BandTest {
 
   @Test
   public void find_findsBandInDatabase(){
-    Band firstBand = new Band("Modest Mouse");
-    Band secondBand = new Band("Beach House");
+    Band firstBand = new Band("Modest Mouse", "info");
+    Band secondBand = new Band("Beach House", "info");
     firstBand.save();
     secondBand.save();
     Band savedBand = Band.find(firstBand.getId());
@@ -38,18 +38,18 @@ public class BandTest {
   }
 
   @Test
-  public void update_updatesBandInfo(){
-    Band firstBand = new Band("Modest House");
+  public void update_updatesBandName(){
+    Band firstBand = new Band("Modest House", "info");
     firstBand.save();
-    firstBand.update("Modest Mouse");
+    firstBand.updateName("Modest House");
     Band savedBand = Band.find(firstBand.getId());
-    assertEquals(savedBand.getBandName(), "Modest Mouse");
+    assertEquals(savedBand.getBandName(), "Modest House");
   }
 
   @Test
    public void delete_deletesObjectFromDatabase(){
-     Band firstBand = new Band("Modest Mouse");
-     Band secondBand = new Band("Beach House");
+     Band firstBand = new Band("Modest Mouse", "info");
+     Band secondBand = new Band("Beach House", "info");
      firstBand.save();
      secondBand.save();
      firstBand.delete();
@@ -58,8 +58,8 @@ public class BandTest {
 
   @Test
   public void addVenue_addsAVenueToBand(){
-    Band firstBand = new Band("Modest Mouse");
-    Band secondBand = new Band("Beach House");
+    Band firstBand = new Band("Modest Mouse", "info");
+    Band secondBand = new Band("Beach House", "info");
     firstBand.save();
     secondBand.save();
     Venue firstVenue = new Venue("Ash Street Saloon");

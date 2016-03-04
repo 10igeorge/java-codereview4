@@ -33,6 +33,7 @@ public class AppTest extends FluentTest {
   public void addBand(){
     goTo("http://localhost:4567/");
     fill("#bandName").with("Modest Mouse");
+    fill("#bandInfo").with("Cool guy band");
     submit("#createBand");
     assertThat(pageSource()).contains("Modest Mouse has successfully been added!");
   }
@@ -47,8 +48,8 @@ public class AppTest extends FluentTest {
 
   @Test
   public void listAllBands() {
-    Band firstBand = new Band("Modest Mouse");
-    Band secondBand = new Band("Beach House");
+    Band firstBand = new Band("Modest Mouse", "info");
+    Band secondBand = new Band("Beach House", "info");
     firstBand.save();
     secondBand.save();
     goTo("http://localhost:4567/bands");
@@ -69,8 +70,8 @@ public class AppTest extends FluentTest {
 
   @Test
   public void addVenueToBand() {
-    Band firstBand = new Band("Modest Mouse");
-    Band secondBand = new Band("Beach House");
+    Band firstBand = new Band("Modest Mouse", "info");
+    Band secondBand = new Band("Beach House", "info");
     firstBand.save();
     secondBand.save();
     Venue firstVenue = new Venue("Ash Street Saloon");
@@ -86,8 +87,8 @@ public class AppTest extends FluentTest {
 
   @Test
   public void deleteBand(){
-    Band firstBand = new Band("Modest Mouse");
-    Band secondBand = new Band("Beach House");
+    Band firstBand = new Band("Modest Mouse", "info");
+    Band secondBand = new Band("Beach House", "info");
     firstBand.save();
     secondBand.save();
     firstBand.delete();

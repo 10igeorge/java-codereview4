@@ -47,8 +47,8 @@ public class VenueTest {
 
   @Test
   public void addBand_addsABandToVenue(){
-    Band firstBand = new Band("Modest Mouse");
-    Band secondBand = new Band("Beach House");
+    Band firstBand = new Band("Modest Mouse", "info");
+    Band secondBand = new Band("Beach House", "info");
     firstBand.save();
     secondBand.save();
     Venue firstVenue = new Venue("Ash Street Saloon");
