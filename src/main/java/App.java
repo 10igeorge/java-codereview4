@@ -92,6 +92,26 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/update-band/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params("id")));
+      model.put("band", band);
+      model.put("template", "templates/update-band.vtl");
+      return new ModelAndView (model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/update-band/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params("id")));
+      String updateName = request.queryParams("bandName");
+      String updateBio = request.queryParams("bandInfo");
+      band.update(updateName, updateBio);
+      model.put("playedVenues", band.getVenues());
+      model.put("band", band);
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView (model, layout);
+    }, new VelocityTemplateEngine());
+
     post("/delete/venue/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int id = Integer.parseInt(request.params("id"));

@@ -1,0 +1,9 @@
+<h1>Update $band.getBandName()</h1>
+
+<form action="/update-band/$band.getId()" method="post">
+  <label for="bandName">Band Name:</label><br>
+  <textarea type="text" name="bandName" id="bandName" cols="20" rows="1">$band.getBandName()</textarea><br><br>
+  <label for="bandInfo">Band Bio:</label><br>
+  <textarea type="text" name="bandInfo" id="bandInfo" cols="20" rows="5">$band.getBandBio()</textarea><br><br>
+  <button type="submit" id="createBand" class="btn btn-success">Update Band</button>
+</form>
