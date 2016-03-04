@@ -61,23 +61,4 @@ public class VenueTest {
     assertTrue(firstVenue.getBands().contains(secondBand));
     assertEquals(secondVenue.getBands().size(), 1);
   }
-
-  // @Test
-  // public void delete_deletesVenueFromDatabase(){
-  //   Venue firstVenue = new Venue("Ash Street Saloon");
-  //   Venue secondVenue = new Venue("Doug Fir");
-  //   firstVenue.save();
-  //   secondVenue.save();
-  //   firstVenue.delete();
-  //   assertFalse(Venue.all().contains(firstVenue));
-  // }
-  //
-  // @Test
-  // public void update_updatesVenueInfo(){
-  //   Venue firstVenue = new Venue("Ash Street Pub");
-  //   firstVenue.save();
-  //   firstVenue.update("Ash Street Saloon");
-  //   Venue savedVenue = Venue.find(firstVenue.getId());
-  //   assertEquals(savedVenue.getVenueName(), "Ash Street Saloon");
-  // }
 }
