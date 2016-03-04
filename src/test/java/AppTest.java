@@ -29,5 +29,19 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Concerts");
   }
 
-  
+  @Test
+  public void addBand(){
+    goTo("http://localhost:4567/");
+    fill("#bandName").with("Modest Mouse");
+    submit("#createBand");
+    assertThat(pageSource()).contains("Modest Mouse has successfully been added!");
+  }
+
+  @Test
+  public void addVenue(){
+    goTo("http://localhost:4567/");
+    fill("#venueName").with("Doug Fir");
+    submit("#createVenue");
+    assertThat(pageSource()).contains("Doug Fir has successfully been added to the venue list!");
+  }
 }

@@ -11,5 +11,15 @@
     #end
   </div>
 
-
+  <div class="col-sm-6">
+    <form action="/add-venue" method="post">
+      <label for="venueName">Venue Name:</label><br>
+      <input type="text" name="venueName" id="venueName"><br><br>
+      <button type="submit" id="createVenue">Insert Venue</button>
+    </form><br><br>
+   #if ($venue)
+     <hr/>
+     <p>$venue.getVenueName() has successfully been added to the venue list!</p>
+   #end
+ </div>
 </div>

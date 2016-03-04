@@ -23,5 +23,15 @@ public class App {
       model.put("template", "templates/index.vtl");
       return new ModelAndView (model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/add-venue", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      String newVenue = request.queryParams("venueName");
+      Venue venue = new Venue(newVenue);
+      venue.save();
+      model.put("venue", venue);
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView (model, layout);
+    }, new VelocityTemplateEngine());
   }
 }
