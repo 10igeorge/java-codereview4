@@ -10,7 +10,12 @@
 
   </div>
   <div class="col-sm-6">
-    <h5>$venue.getVenueName()</h5>
+    #if($addedVenues)
+      <h4>These venues have been added to the venues played list for $band.getBandName():</h4>
+      #foreach($venue in $addedVenues)
+        <h5>$venue.getVenueName()</h5>
+      #end
+    #end
     <h4>Add Venues:</h4>
     <form action="/bands/$band.getId()" method="post">
       #foreach($venue in $venues)

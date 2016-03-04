@@ -72,6 +72,7 @@ public class App {
           addedVenues.add(Venue.find(Integer.parseInt(venueId)));
         }
       }
+      model.put("addedVenues", addedVenues);
       model.put("playedVenues", band.getVenues());
       model.put("band", band);
       model.put("venues", Venue.all());

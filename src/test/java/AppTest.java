@@ -66,4 +66,21 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Ash Street Saloon");
     assertThat(pageSource()).contains("Doug Fir");
   }
+
+  @Test
+  public void addVenueToBand() {
+    Band firstBand = new Band("Modest Mouse");
+    Band secondBand = new Band("Beach House");
+    firstBand.save();
+    secondBand.save();
+    Venue firstVenue = new Venue("Ash Street Saloon");
+    Venue secondVenue = new Venue("Doug Fir");
+    firstVenue.save();
+    secondVenue.save();
+    goTo("http://localhost:4567/bands");
+    click("a", withText("Modest Mouse"));
+    click("#venue" + firstVenue.getId());
+    submit("#addVenue");
+    assertThat(pageSource()).contains("These venues have been added to the venues played list");
+  }
 }
