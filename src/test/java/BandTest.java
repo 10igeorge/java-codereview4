@@ -41,7 +41,7 @@ public class BandTest {
   public void update_updatesBandName(){
     Band firstBand = new Band("Modest House", "info");
     firstBand.save();
-    firstBand.updateName("Modest House");
+    firstBand.update("Modest House", "info");
     Band savedBand = Band.find(firstBand.getId());
     assertEquals(savedBand.getBandName(), "Modest House");
   }
