@@ -1,1 +1,15 @@
-<h1>Concerts</h1>
+<div class="row">
+   <div class="col-sm-6">
+     <form action="/add-band" method="post">
+       <label for="bandName">Band Name:</label><br>
+       <input type="text" name="bandName" id="bandName"><br><br>
+       <button type="submit" id="createBand" class="btn btn-success">Insert Band</button>
+     </form><br>
+    #if ($band)
+      <hr/>
+      <p>$band.getBandName() has successfully been added!</p>
+    #end
+  </div>
+
+
+</div>
