@@ -15,6 +15,10 @@ public class Band {
     return id;
   }
 
+  public String getBandBio(){
+    return band_info;
+  }
+
   public String getBandName(){
     return band_name;
   }
@@ -39,10 +43,11 @@ public class Band {
   }
 
   public void save(){
-    String sql = "INSERT INTO bands (band_name) VALUES (:band_name)";
+    String sql = "INSERT INTO bands (band_name, band_info) VALUES (:band_name, :band_info)";
     try(Connection con = DB.sql2o.open()){
       this.id = (int) con.createQuery(sql, true)
         .addParameter("band_name", band_name)
+        .addParameter("band_info", band_info)
         .executeUpdate()
         .getKey();
     }

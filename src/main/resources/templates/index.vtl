@@ -4,8 +4,8 @@
      <form action="/add-band" method="post">
        <label for="bandName">Band Name:</label><br>
        <input type="text" name="bandName" id="bandName"><br>
-       <label for="bandInfo">Band Bio:</label>
-       <input type="text" name="bandInfo" id="bandInfo"><br><br>
+       <label for="bandInfo">Band Bio:</label><br>
+       <textarea type="text" name="bandInfo" id="bandInfo" cols="20" rows="5"></textarea><br><br>
        <button type="submit" id="createBand" class="btn btn-success">Insert Band</button>
      </form><br>
     #if ($band)
