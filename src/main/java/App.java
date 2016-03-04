@@ -79,5 +79,36 @@ public class App {
       model.put("template", "templates/band.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/venues/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Venue venue = Venue.find(id);
+      model.put("bandsHosted", venue.getBands());
+      model.put("venue", venue);
+      model.put("bands", Band.all());
+      model.put("template", "templates/venue.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/venues/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Venue venue = Venue.find(id);
+      String[] addedIds = request.queryParamsValues("checkBand");
+      ArrayList<Band> addedBands = new ArrayList<Band>();
+      if (addedIds != null){
+        for(String bandId : addedIds){
+          venue.addBand(Integer.parseInt(bandId));
+          addedBands.add(Band.find(Integer.parseInt(bandId)));
+        }
+      }
+      model.put("addedBands", addedBands);
+      model.put("bandsHosted", venue.getBands());
+      model.put("venue", venue);
+      model.put("bands", Band.all());
+      model.put("template", "templates/venue.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }

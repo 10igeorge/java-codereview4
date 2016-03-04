@@ -1,0 +1,34 @@
+<h1>$venue.getVenueName()</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Bands hosted:</h4>
+    <div class="list-group">
+    #foreach ($band in $bandsHosted)
+      <a href="/bands/$band.getId()" class="list-group-item">$band.getBandName()</a>
+    #end
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <h4>Host bands:</h4>
+    <form action="/venues/$venue.getId()" method="post">
+      #foreach($band in $bands)
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="checkBand" value="$band.getId()" id="band$band.getId()">
+            $band.getBandName()
+          </label>
+        </div>
+        #end
+        <button type="submit" id="addBand" class="btn btn-default">Host Bands</button>
+    </form>
+
+
+    #if($addedBands)
+      <h5>These bands have been added to the bands hosted list for $venue.getVenueName()</h5>
+      #foreach($band in $addedBands)
+        <h5>$band.getBandName()</h5>
+      #end
+    #end
+  </div>
+</div>
